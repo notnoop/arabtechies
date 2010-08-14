@@ -2,18 +2,22 @@ Install Java, Simple Build Tool, and Git
 
 Clone this repository with:
 
-git clone git://github.com/lift/lift_sbt_prototype.git
+    git clone git://github.com/lift/lift_sbt_prototype.git
 
 Then cd into lift_sbt_prototype and type:
-sbt
+
+    sbt
 
 At the sbt prompt, type:
-update
+
+    update
 
 Then:
-jetty-run
+
+    jetty-run
 
 Point your browser to:
-http://localhost:8080/
+
+    http://localhost:8080/
 
 Voila a running Lift app
