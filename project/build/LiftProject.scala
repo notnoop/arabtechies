@@ -3,12 +3,12 @@ import sbt._
 class LiftProject(info: ProjectInfo) extends DefaultWebProject(info) {
   val liftVersion = "2.1-SNAPSHOT"
 
-  val scalatoolsSnapshot = 
+  val scalatoolsSnapshot =
     "Scala Tools Snapshot" at "http://scala-tools.org/repo-snapshots/"
 
   // If you're using JRebel for Lift development, uncomment
   // this line
-  // override def scanDirectories = Nil
+  override def scanDirectories = Nil
 
   override def libraryDependencies = Set(
     "net.liftweb" %% "lift-webkit" % liftVersion % "compile->default",

@@ -20,9 +20,9 @@ import code.model._
 class Boot {
   def boot {
     if (!DB.jndiJdbcConnAvailable_?) {
-      val vendor = 
+      val vendor =
 	new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
-			     Props.get("db.url") openOr 
+			     Props.get("db.url") openOr
 			     "jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE",
 			     Props.get("db.user"), Props.get("db.password"))
 
@@ -34,7 +34,7 @@ class Boot {
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
-    Schemifier.schemify(true, Schemifier.infoF _, User)
+    Schemifier.schemify(true, Schemifier.infoF _, User, Gig)
 
     // where to search snippet
     LiftRules.addToPackages("code")
@@ -43,12 +43,15 @@ class Boot {
     val entries = List(
       Menu.i("Home") / "index", // the simple way to declare a menu
 
+      Menu(Loc("GigList", List("gigs", "list"),
+        "Technology Jobs in the Middle East")),
+
       // more complex because this menu allows anything in the
       // /static path to be visible
-      Menu(Loc("Static", Link(List("static"), true, "/static/index"), 
+      Menu(Loc("Static", Link(List("static"), true, "/static/index"),
 	       "Static Content"))) :::
     // the User management menu items
-    User.sitemap
+    User.sitemap ::: Gig.menus
 
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
@@ -57,7 +60,7 @@ class Boot {
     //Show the spinny image when an Ajax call starts
     LiftRules.ajaxStart =
       Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
-    
+
     // Make the spinny image go away when it ends
     LiftRules.ajaxEnd =
       Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)

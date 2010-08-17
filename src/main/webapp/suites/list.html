@@ -1,0 +1,13 @@
+<lift:surround with="default" at="content">
+  <h2>Looking for a startup Gig?</h2>
+
+  <div class="listing">
+    <lift:lists.>
+        <div class="gig">
+            <h3><g:title/></h3> - <h4><g:location/></h4>
+            <h5>Created at <g:createdAt/></h5>
+            <p class="snippet"><g:description/></p>
+        </div>
+    </lift:gigs.recentGigs>
+  </div>
+</lift:surround>
