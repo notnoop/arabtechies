@@ -41,17 +41,15 @@ class Boot {
 
     // Build SiteMap
     val entries = List(
-      Menu.i("Home") / "index", // the simple way to declare a menu
+      Menu.i("Home") / "index" >> Hidden, // the simple way to declare a menu
+      Menu.i("Geeks") / "geeks",
+      Menu.i("Suites") / "suites",
+      Menu.i("Startups") / "startups",
+      Menu.i("Gigs") / "gigs"
+      ) ::: Gig.menus
 
-      Menu(Loc("GigList", List("gigs", "list"),
-        "Technology Jobs in the Middle East")),
-
-      // more complex because this menu allows anything in the
-      // /static path to be visible
-      Menu(Loc("Static", Link(List("static"), true, "/static/index"),
-	       "Static Content"))) :::
     // the User management menu items
-    User.sitemap ::: Gig.menus
+    // User.sitemap ::: Gig.menus
 
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.

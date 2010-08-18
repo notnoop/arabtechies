@@ -43,6 +43,10 @@ body {
 }
 
 .nav li a {
+    background: #F5F6EB;
+    color: #9A9A7E;
+    display: inline;
+
     padding: 5px 0.5em;
     margin-left: 5px;
     border: 1px solid #E8E8E8;
@@ -52,6 +56,10 @@ body {
     border-top-right-radius: 5px 5px;
     -moz-border-radius-topleft: 5px;
     border-top-left-radius: 5px 5px;
+}
+
+.nav .current a {
+    background: #FFFFFF;
 }
 
 h2 {
@@ -69,6 +77,10 @@ a {
     text-decoration: none;
 }
 
+a.add_content:hover {
+    text-decoration: underline;
+}
+
 .listing {
     padding: 0 0;
     list-style: none outside none;
@@ -79,6 +91,10 @@ a {
     border-bottom: 2px solid #E8E8E8;
     padding: 1em 0.5em;
     background-color: #ECF3FE;
+}
+
+.listing .hl {
+    background-color: #FFFFFF;
 }
 
 .listing h3 {

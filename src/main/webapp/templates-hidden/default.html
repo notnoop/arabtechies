@@ -20,25 +20,21 @@
 <div class="container">
     <div class="header">
         <h1>Arabgigs</h1>
-        <a class="add_content" href="#">Add a Profile</a>
-        <a class="add_content" href="#">Add a Company</a>
-        <a class="add_content" href="#">Add a Gig</a>
+
+        <a class="add_content" href="#">Gig</a>
+        <a class="add_content" href="#">Company</a>
+        <a class="add_content" href="#">Profile</a>
+        <span class="add_content">Add: </span>
 
         <h3>Find Enterprenuers, Find Startups</h3>
     </div>
 
-    <ul class="nav">
-        <li><a href="#">Hackers</a></li>
-        <li><a href="#">Suites</a></li>
-        <li><a href="#">Companies</a></li>
-    </ul>
+    <lift:Menu.builder ul:class="nav" linkToSelf="true"
+        li_item:class="current" />
 
     <lift:Msgs showAll="True" />
 
     <lift:bind name="content" />
-
-    <hr />
-    <lift:Menu.builder />
 
     <hr />
     <div class="footer">

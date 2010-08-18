@@ -17,29 +17,48 @@ class Lists {
   private val gigs = Gig.findAll(OrderBy(Gig.createdAt, Descending))
   private val suites = User.findAll(OrderBy(User.createdAt, Descending))
 
-  private val dateFormat = DateFormat.getDateInstance(DateFormat.SHORT)
+  private val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
+
+  def snippet(maxLen: Int)(s: String) : String = {
+    if (s == null || s.length < maxLen) s
+    else s.substring(0, maxLen) + "..."
+  }
+
+  def coloringClass(index: Int, c: String) =
+    AttrBindParam("class",
+    if (index % 2 == 0) "hl" else "", "class")
 
   def gigs(xhtml: NodeSeq): NodeSeq = {
+    var i = 0
     gigs.flatMap(item =>
       bind("i", xhtml,
         "title" -> item.title,
-        "createdAt" -> item.createdAt,
+        "createdAt" -> dateFormat.format(item.createdAt.is),
         "location" -> item.location,
-        "snippet" -> item.description
+        "snippet" -> snippet(255)(item.description.is),
+        AttrBindParam("href", "/gigs/view/" + item.id.is, "href"),
+        { i += 1; coloringClass(i, "hl") }
       )
     )
   }
 
-  def allSuites(xhtml: NodeSeq): NodeSeq = {
+  def startups(xhtml: NodeSeq) = gigs(xhtml)
+
+  def suites(xhtml: NodeSeq): NodeSeq = {
+    var i = 0
     suites.flatMap(item =>
       bind("i", xhtml,
-        "name" -> item.firstName,
-        "createdAt" -> item.createdAt,
+        "title" -> item.shortName,
+        "createdAt" -> dateFormat.format(item.createdAt.is),
         "location" -> item.location,
-        "snippet" -> item.statement
+        "snippet" -> snippet(255)(item.statement.is),
+        AttrBindParam("href", "/suite/view/" + item.id.is, "href"),
+        { i += 1; coloringClass(i, "hl") }
       )
     )
   }
+
+  def geeks(xhtml: NodeSeq) = suites(xhtml)
 }
 
 }
