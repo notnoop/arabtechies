@@ -11,10 +11,11 @@ import Helpers._
 
 import java.text.{DateFormat}
 
-import code.model.{Gig, User}
+import code.model._
 
 class Lists {
   private val gigs = Gig.findAll(OrderBy(Gig.createdAt, Descending))
+  private val businesses = Business.findAll(OrderBy(Business.createdAt, Descending))
   private val suites = User.findAll(OrderBy(User.createdAt, Descending))
 
   private val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
@@ -42,7 +43,19 @@ class Lists {
     )
   }
 
-  def startups(xhtml: NodeSeq) = gigs(xhtml)
+  def startups(xhtml: NodeSeq): NodeSeq = {
+    var i = 0
+    businesses.flatMap(item =>
+      bind("i", xhtml,
+        "title" -> item.title,
+        "createdAt" -> dateFormat.format(item.createdAt.is),
+        "location" -> item.location,
+        "snippet" -> snippet(255)(item.description.is),
+        AttrBindParam("href", "/gigs/view/" + item.id.is, "href"),
+        { i += 1; coloringClass(i, "hl") }
+      )
+    )
+  }
 
   def suites(xhtml: NodeSeq): NodeSeq = {
     var i = 0

@@ -10,6 +10,7 @@ class LiftProject(info: ProjectInfo) extends DefaultWebProject(info) {
   // this line
   override def scanDirectories = Nil
 
+
   override def libraryDependencies = Set(
     "net.liftweb" %% "lift-webkit" % liftVersion % "compile->default",
     "net.liftweb" %% "lift-mapper" % liftVersion % "compile->default",
@@ -18,4 +19,10 @@ class LiftProject(info: ProjectInfo) extends DefaultWebProject(info) {
     "org.scala-tools.testing" %% "specs" % "1.6.5" % "test->default",
     "com.h2database" % "h2" % "1.2.138"
   ) ++ super.libraryDependencies
+
+
+  // Other non-Lift dependencies
+  val t_repo = "t_repo" at "http://tristanhunt.com:8081/content/groups/public/"
+  val tex_repo = "SnuggleTex_repo" at "http://www2.ph.ed.ac.uk/maven2"
+  val knockoff = "com.tristanhunt" %% "knockoff" % "0.7.3-14"
 }
