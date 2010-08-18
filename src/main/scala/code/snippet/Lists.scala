@@ -14,9 +14,9 @@ import java.text.{DateFormat}
 import code.model._
 
 class Lists {
-  private val gigs = Gig.findAll(OrderBy(Gig.createdAt, Descending))
-  private val businesses = Business.findAll(OrderBy(Business.createdAt, Descending))
-  private val suites = User.findAll(OrderBy(User.createdAt, Descending))
+  private lazy val gigs = Gig.findAll(OrderBy(Gig.createdAt, Descending))
+  private lazy val businesses = Business.findAll(OrderBy(Business.createdAt, Descending))
+  private lazy val suites = User.findAll(OrderBy(User.createdAt, Descending))
 
   private val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
 
