@@ -60,9 +60,8 @@ class Boot {
       Menu.i("Geeks") / "geeks",
       Menu.i("Suites") / "suites",
       Menu.i("Startups") / "startups",
-      Menu.i("Gigs") / "gigs",
 
-      ) ::: Gig.menus ::: Business.menus
+      ) ::: Business.menus
 
     // the User management menu items
     // User.sitemap ::: Gig.menus
