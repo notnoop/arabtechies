@@ -4,6 +4,7 @@ package model {
 import _root_.net.liftweb.mapper._
 import _root_.net.liftweb.util._
 import _root_.net.liftweb.common._
+import _root_.net.liftweb.sitemap.Loc._
 
 object Gig extends Gig with LongKeyedMetaMapper[Gig]
 with CRUDify[Long, Gig] {
@@ -12,6 +13,8 @@ with CRUDify[Long, Gig] {
   override def fieldOrder = List(title, description, location,
     country, website, contact, notes)
   override def showAllMenuLoc = Empty
+  override def createMenuLocParams: List[AnyLocParam] = Hidden :: Nil
+  override def viewMenuLoc = Empty
 }
 
 class Gig extends LongKeyedMapper[Gig] with IdPK with CreatedUpdated {
@@ -25,6 +28,11 @@ class Gig extends LongKeyedMapper[Gig] with IdPK with CreatedUpdated {
   object description extends MappedTextarea(this, 2048) {
     override def displayName = "Description"
     override def required_? = true
+    override def asHtml : scala.xml.Node = {
+      import com.tristanhunt.knockoff.DefaultDiscounter._
+      val text : String = is
+      toXHTML(knockoff(text.replace("\r\n", "\n")))
+    }
   }
 
   object country extends MappedCountry(this) {

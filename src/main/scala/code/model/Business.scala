@@ -4,6 +4,7 @@ package model {
 import _root_.net.liftweb.mapper._
 import _root_.net.liftweb.util._
 import _root_.net.liftweb.common._
+import _root_.net.liftweb.sitemap.Loc._
 
 object Business extends Business with LongKeyedMetaMapper[Business]
 with CRUDify[Long, Business] {
@@ -12,6 +13,7 @@ with CRUDify[Long, Business] {
   override def fieldOrder = List(title, description, location,
     country, website, contact, notes)
   override def showAllMenuLoc = Empty
+  override def createMenuLocParams: List[AnyLocParam] = Hidden :: Nil
 }
 
 class Business extends LongKeyedMapper[Business] with IdPK with CreatedUpdated {

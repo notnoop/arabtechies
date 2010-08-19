@@ -39,13 +39,29 @@ class Boot {
     // where to search snippet
     LiftRules.addToPackages("code")
 
+    def isNumeric(s: String) =
+      try {
+        Integer.parseInt(s)
+        true
+      } catch {
+        case _ => false
+      }
+
+
+    LiftRules.statelessRewrite.append {
+      case RewriteRequest(
+        ParsePath(List("gigs", id),_,_,_),_,_) if isNumeric(id) =>
+      RewriteResponse("gigs" :: "view" :: Nil, Map("id" -> id))
+    }
+
     // Build SiteMap
     val entries = List(
       Menu.i("Home") / "index" >> Hidden, // the simple way to declare a menu
       Menu.i("Geeks") / "geeks",
       Menu.i("Suites") / "suites",
       Menu.i("Startups") / "startups",
-      Menu.i("Gigs") / "gigs"
+      Menu.i("Gigs") / "gigs",
+
       ) ::: Gig.menus ::: Business.menus
 
     // the User management menu items
