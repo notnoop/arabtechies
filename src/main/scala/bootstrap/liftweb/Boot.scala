@@ -59,7 +59,7 @@ class Boot {
       Menu.i("Home") / "index" >> Hidden, // the simple way to declare a menu
       Menu.i("Geeks") / "geeks",
       Menu.i("Suites") / "suites",
-      Menu.i("Startups") / "startups",
+      Menu.i("Startups") / "startups"
 
       ) ::: Business.menus
 
