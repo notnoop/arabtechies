@@ -71,10 +71,10 @@ class Boot {
       Menu.i("About Us") / "index", // the simple way to declare a menu
       Menu.i("Geeks") / "geeks",
       Menu.i("Suits") / "suits",
+      Menu.i("Designers") / "designers",
 
       // Viewing
-      Menu.i("ViewProfile") / "u" / "view" >> Hidden,
-      Menu.i("EditProfile") / "u" / "edit" >> Hidden
+      Menu.i("ViewProfile") / "u" / "view" >> Hidden
 
       ) ::: User.sitemap ::: Business.menus
 

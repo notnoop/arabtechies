@@ -29,6 +29,9 @@ object User extends User with MetaMegaProtoUser[User] {
   override def createUserMenuLocParams = Hidden :: super.createUserMenuLocParams
   override def loginMenuLocParams = Hidden :: super.loginMenuLocParams
   override def lostPasswordMenuLocParams = Hidden :: super.lostPasswordMenuLocParams
+  override def changePasswordMenuLocParams = Hidden :: super.changePasswordMenuLocParams
+  override def editUserMenuLocParams = Hidden :: super.editUserMenuLocParams
+  override def logoutMenuLocParams = Hidden :: super.logoutMenuLocParams
 
   override def signupXhtml(user: User) = {
     (<form method="post" class="profile_form" action={S.uri}>
@@ -140,7 +143,7 @@ class User extends MegaProtoUser[User] with CreatedUpdated {
     }
   }
 
-  object kind extends MappedEnumList(this, UserType) {
+  object kind extends MappedEnum(this, UserType) {
     override def displayName = "Type"
   }
 }
