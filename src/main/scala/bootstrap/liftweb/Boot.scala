@@ -70,7 +70,7 @@ class Boot {
     val entries = List(
       Menu.i("About Us") / "index", // the simple way to declare a menu
       Menu.i("Geeks") / "geeks",
-      Menu.i("Suites") / "suites",
+      Menu.i("Suits") / "suits",
 
       // Viewing
       Menu.i("ViewProfile") / "u" / "view" >> Hidden,

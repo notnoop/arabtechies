@@ -14,9 +14,7 @@ import java.text.{DateFormat}
 import code.model._
 
 class Lists {
-  private lazy val gigs = Gig.findAll(OrderBy(Gig.createdAt, Descending))
-  private lazy val businesses = Business.findAll(OrderBy(Business.createdAt, Descending))
-  private lazy val suites = User.findAll(OrderBy(User.createdAt, Descending))
+  private lazy val suits = User.findAll(OrderBy(User.createdAt, Descending))
 
   private val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
 
@@ -57,9 +55,9 @@ class Lists {
     )
   }
 
-  def suites(xhtml: NodeSeq): NodeSeq = {
+  def suits(xhtml: NodeSeq): NodeSeq = {
     var i = 0
-    suites.flatMap(item =>
+    suits.flatMap(item =>
       bind("i", xhtml,
         "title" -> item.shortName,
         "createdAt" -> dateFormat.format(item.createdAt.is),
@@ -71,7 +69,7 @@ class Lists {
     )
   }
 
-  def geeks(xhtml: NodeSeq) = suites(xhtml)
+  def geeks(xhtml: NodeSeq) = suits(xhtml)
 }
 
 }
