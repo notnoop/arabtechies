@@ -1,0 +1,25 @@
+<lift:surround with="default" at="content">
+    <div class="content">
+        <lift:profiles.view>
+            <h2><u:title /></h2>
+            <h5>Last updated on <u:updatedAt /></h5>
+
+            <div class="info_wrap">
+                <p class="info_description"><u:description /></p>
+
+                <u:location>
+                    <p><strong>Location:</strong><u:value/></p>
+                </u:location>
+                <u:country>
+                    <p><strong>Country:</strong><u:value /></p>
+                </u:country>
+                <u:website>
+                    <p><strong>Website:</strong><u:value /></p>
+                </u:website>
+                <p><strong>Contact:</strong>
+                    <a u:contactURL="">Contact this user</a></p>
+            </div>
+        </lift:profiles.view>
+    </div>
+</lift:surround>
+

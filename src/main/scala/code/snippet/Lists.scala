@@ -63,9 +63,9 @@ class Lists {
       bind("i", xhtml,
         "title" -> item.shortName,
         "createdAt" -> dateFormat.format(item.createdAt.is),
-        "location" -> item.location,
-        "snippet" -> snippet(255)(item.statement.is),
-        AttrBindParam("href", "/suite/view/" + item.id.is, "href"),
+        "location" -> item.city,
+        "snippet" -> snippet(255)(item.statement.asText),
+        AttrBindParam("href", "/u/" + item.id.is, "href"),
         { i += 1; coloringClass(i, "hl") }
       )
     )

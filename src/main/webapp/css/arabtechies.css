@@ -63,7 +63,7 @@ body {
 }
 
 h2 {
-    color: #464646;
+    color: #666666;
 
     margin-bottom: 0.6em;
 }
@@ -126,3 +126,111 @@ p  {
     margin-bottom:0.6em;
 }
 
+.content h2 {
+    line-height: 1.28em;
+    margin: 1.5em 0 0.6em;
+}
+
+h5 {
+    color: #495139;
+    font-size: 0.875em;
+    font-weight: 300;
+    line-height: 1.2em;
+    padding: 0.2em 0;
+}
+
+.info_description {
+    margin: 1.5em 0;
+}
+
+.info_wrap p {
+    color: #272727;
+}
+
+.info_wrap strong {
+    color: #464646;
+    padding-right: 0.5em;
+}
+
+strong {
+    font-weight: 700;
+}
+
+.profile_form {
+    margin: 2.4em 0;
+}
+
+.profile_form fieldset {
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border: 1px solid #F1F1F1;
+    margin: 1em 0;
+    padding: 0 1em 0.5em;
+}
+
+.profile_form legend {
+    color: #7D9E40;
+    font-size: 1.3125em;
+    font-weight: 600;
+}
+
+.profile_form div {
+    margin: 1em 0;
+}
+
+.profile_form label {
+    display: block;
+    font-weight: 600;
+    line-height: 1.625em;
+}
+
+.profile_form input[type="text"] {
+    width: 40%;
+    line-height: 1.45em;
+}
+
+.profile_form input[type="checkbox"] {
+    margin: 0 0 0 2em;
+}
+
+.profile_form textarea {
+    width: 90%;
+}
+
+.profile_form input, .profile_form textarea {
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-border-radius: 2px 2px 2px 2px;
+    border: 1px solid #BBBBBB;
+}
+
+.profile_form p.explanation {
+    color: #555555;
+    font-size: 0.875em;
+    margin: 0;
+}
+
+.profile_form label span.required {
+    font-weight: normal;
+    color: #B61A12;
+    padding-left: 0.5em;
+}
+
+.profile_form div.required label:after {
+    content: " *";
+    color: #B61A12;
+}
+
+.profile_form div.required li label:after {
+    content: "";
+}
+
+.profile_form input[type="submit"] {
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    background-color: #F0F0F0;
+    border: 1px solid #C5C5C5;
+    color: #222222;
+    font-weight: 600;
+    padding: 10px 30px;
+    text-shadow: 0 1px 1px #FFFFFF;
+}

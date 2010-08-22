@@ -4,7 +4,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
-    <title>ArabGigs - Find Enterprenuers, Find Startups</title>
+    <title>Arabtechies - Find Enterprenuers, Find Startups</title>
 
     <!-- <lift:CSS.blueprint /> -->
     <!-- <lift:CSS.fancyType /> -->
@@ -22,12 +22,18 @@
         <h1>Arabtechies</h1>
 
         <!-- add elements here in reverse order -->
-        <a class="add_content" href="/gigs/create">Gig</a>
-        <a class="add_content" href="/businesses/create">Business</a>
-        <a class="add_content" href="#">Profile</a>
-        <span class="add_content">Add: </span>
+        <lift:test_cond.loggedin>
+            <a class="add_content" href="#">Log out</a>
+            <a class="add_content" href="/user_mgt/edit">Edit Profile</a>
+        </lift:test_cond.loggedin>
+
+        <lift:test_cond.loggedout>
+            <a class="add_content" href="/signup">Add Profile</a>
+            <a class="add_content" href="/login">Login</a>
+        </lift:test_cond.loggedout>
 
         <h3>Where the developers and techies are!</h3>
+
     </div>
 
     <lift:Menu.builder ul:class="nav" linkToSelf="true"

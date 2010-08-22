@@ -50,18 +50,33 @@ class Boot {
 
     LiftRules.statelessRewrite.append {
       case RewriteRequest(
-        ParsePath(List("gigs", id),_,_,_),_,_) if isNumeric(id) =>
-      RewriteResponse("gigs" :: "view" :: Nil, Map("id" -> id))
+        ParsePath(List("u", id),_,_,_),_,_) if isNumeric(id) =>
+      RewriteResponse("u" :: "view" :: Nil, Map("id" -> id))
+      case RewriteRequest(
+        ParsePath(List("u", id, "edit"),_,_,_),_,_) if isNumeric(id) =>
+      RewriteResponse("u" :: "edit" :: Nil, Map("id" -> id))
+      case RewriteRequest(
+        ParsePath(List("login"),_,_,_),_,_) =>
+      RewriteResponse("user_mgt" :: "login" :: Nil)
+      case RewriteRequest(
+        ParsePath(List("logout"),_,_,_),_,_) =>
+      RewriteResponse("user_mgt" :: "logout" :: Nil)
+      case RewriteRequest(
+        ParsePath(List("signup"),_,_,_),_,_) =>
+      RewriteResponse("user_mgt" :: "sign_up" :: Nil)
     }
 
     // Build SiteMap
     val entries = List(
-      Menu.i("Home") / "index" >> Hidden, // the simple way to declare a menu
+      Menu.i("About Us") / "index", // the simple way to declare a menu
       Menu.i("Geeks") / "geeks",
       Menu.i("Suites") / "suites",
-      Menu.i("Startups") / "startups"
 
-      ) ::: Business.menus
+      // Viewing
+      Menu.i("ViewProfile") / "u" / "view" >> Hidden,
+      Menu.i("EditProfile") / "u" / "edit" >> Hidden
+
+      ) ::: User.sitemap ::: Business.menus
 
     // the User management menu items
     // User.sitemap ::: Gig.menus
