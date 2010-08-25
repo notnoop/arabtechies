@@ -31,7 +31,7 @@ class Profiles {
       val fields = List(m.city, m.country, m.website)
 
       def ifField(f: MappedField[_, _])(in: NodeSeq): NodeSeq =
-        if (f.is == "") Text("") else bind("u", in, "value" -> f.asHtml)
+        if (f.is == null || f.is == "") Text("") else bind("u", in, "value" -> f.asHtml)
 
       item map ({u =>
         bind("u", xhtml,
@@ -42,6 +42,8 @@ class Profiles {
           "location" -> ifField(u.city) _,
           "country" -> ifField(u.country) _,
           "website" -> ifField(u.website) _,
+          "twitter" -> ifField(u.twitter) _,
+          "linkedin" -> ifField(u.linkedin) _,
           "name" -> u.shortName,
           AttrBindParam("contactURL", "/u/" + id + "/contact", "href")
         )

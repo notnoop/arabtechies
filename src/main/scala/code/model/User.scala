@@ -92,6 +92,16 @@ object User extends User with MetaMegaProtoUser[User] {
         { user.country.toForm open_! }
       </div>
 
+      <div>
+        <label>Twitter Handler</label>
+        { user.twitter.toForm open_! }
+      </div>
+
+      <div>
+        <label>LinkedIn Profile</label>
+        { user.linkedin.toForm open_! }
+      </div>
+
       <div class="required">
         <label>Statement markdown</label>
         { user.statement.toForm open_! }
@@ -150,6 +160,22 @@ class User extends MegaProtoUser[User] with CreatedUpdated {
 
   object kind extends MappedEnum(this, UserType) {
     override def displayName = "Type"
+  }
+
+  object twitter extends MappedString(this, 255) {
+    override def displayName = "Twitter Handler"
+    override def required_? = true
+    override def asHtml = {
+      val link = "http://twitter.com/" + is
+      <a href={link}>{ is }</a>
+    }
+  }
+
+  object linkedin extends MappedString(this, 255) {
+    override def displayName = "LinkedIn Profile"
+
+    override def asHtml =
+      <a href={is}>{is}</a>
   }
 }
 
