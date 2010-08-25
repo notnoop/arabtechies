@@ -31,7 +31,7 @@ class Profiles {
       val fields = List(m.city, m.country, m.website)
 
       def ifField(f: MappedField[_, _])(in: NodeSeq): NodeSeq =
-        if (f.is == null || f.is == "") Text("") else bind("u", in, "value" -> f.asHtml)
+        if (f.is == null || f.is == "") NodeSeq.Empty else bind("u", in, "value" -> f.asHtml)
 
       item map ({u =>
         bind("u", xhtml,
