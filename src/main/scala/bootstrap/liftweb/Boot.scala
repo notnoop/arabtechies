@@ -53,11 +53,11 @@ class Boot {
         ParsePath(List("u", id),_,_,_),_,_) if isNumeric(id) =>
       RewriteResponse("u" :: "view" :: Nil, Map("id" -> id))
       case RewriteRequest(
-        ParsePath(List("u", id, "edit"),_,_,_),_,_) if isNumeric(id) =>
-      RewriteResponse("u" :: "edit" :: Nil, Map("id" -> id))
-      case RewriteRequest(
         ParsePath(List("login"),_,_,_),_,_) =>
       RewriteResponse("user_mgt" :: "login" :: Nil)
+      case RewriteRequest(
+        ParsePath(List("edit"),_,_,_),_,_) =>
+      RewriteResponse("user_mgt" :: "edit" :: Nil)
       case RewriteRequest(
         ParsePath(List("logout"),_,_,_),_,_) =>
       RewriteResponse("user_mgt" :: "logout" :: Nil)

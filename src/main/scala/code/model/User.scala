@@ -112,14 +112,19 @@ class User extends MegaProtoUser[User] with CreatedUpdated {
   // define an additional field for a personal essay
   object displayName extends MappedString(this, 255) {
     override def displayName = "Display Name"
+    override def required_? = true
+    override def validations = valMinLen(1, "Name is required") _ :: Nil
   }
 
   object city extends MappedString(this, 255) {
     override def displayName = "City"
+    override def required_? = true
+    override def validations = valMinLen(1, "City is required") _ :: Nil
   }
 
   object country extends MappedCountry(this) {
     override def displayName = "Country"
+    override def required_? = true
   }
 
   object website extends MappedString(this, 255) {

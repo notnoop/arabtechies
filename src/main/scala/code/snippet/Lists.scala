@@ -35,7 +35,7 @@ class Lists {
       bind("i", xhtml,
         "title" -> item.shortName,
         "createdAt" -> dateFormat.format(item.createdAt.is),
-        "location" -> item.city,
+        "location" -> <lift:children>{item.city}, {item.country}</lift:children>,
         "snippet" -> snippet(255)(item.statement.asText),
         AttrBindParam("href", "/u/" + item.id.is, "href"),
         { i += 1; coloringClass(i, "hl") }
