@@ -25,4 +25,10 @@ class LiftProject(info: ProjectInfo) extends DefaultWebProject(info) {
   val t_repo = "t_repo" at "http://tristanhunt.com:8081/content/groups/public/"
   val tex_repo = "SnuggleTex_repo" at "http://www2.ph.ed.ac.uk/maven2"
   val knockoff = "com.tristanhunt" %% "knockoff" % "0.7.3-14"
+
+
+  // Full text search
+  val lucene = "org.apache.lucene" % "lucene-core" % "3.0.2"
+  val compass = "org.compass-project" % "compass" % "2.1.4"
+
 }

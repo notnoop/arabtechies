@@ -73,6 +73,8 @@ class Boot {
       Menu.i("Suits") / "suits",
       Menu.i("Designers") / "designers",
 
+      Menu.i("Search") / "search" >> Hidden,
+
       // Viewing
       Menu.i("ViewProfile") / "u" / "view" >> Hidden
 
